@@ -190,6 +190,8 @@ class Decoder:
             handler(fields)
         except Exception:
             self.logger.exception(f'Error handling fields: {fields}')
+            # Let's the client application continue execution after error
+            # TODO: not sure if this is always the right thing to do.
             self.wrapper._endReq(int(fields[1]))
 
     def parse(self, obj):
