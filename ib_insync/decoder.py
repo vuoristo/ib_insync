@@ -190,6 +190,7 @@ class Decoder:
             handler(fields)
         except Exception:
             self.logger.exception(f'Error handling fields: {fields}')
+            self.wrapper._endReq(int(fields[1]))
 
     def parse(self, obj):
         """Parse the object's properties according to its default types."""
